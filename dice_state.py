@@ -1,6 +1,12 @@
 #define dice class
 
 import numpy as np
+from utils import *
+
+def find_goal_location(maze):
+	maze=np.array(maze)
+	index=np.where(maze=='G')
+	return [index[0][0],index[1][0]]
 
 class dice():
 	def __init__(self,maze,location,top,north,east):
@@ -10,7 +16,10 @@ class dice():
 		self.east=east
 		self.parent=[]
 		self.children=[]
-	
+		self.key=str(location[0])+str(location[1])+str(top)+str(north)+str(east)
+		self.hn=euclidean(self.location,find_goal_location(maze))
+		self.gn=0
+
 	def get_children(self,maze):
 		children=[]
 		max_row=len(maze)
@@ -21,10 +30,14 @@ class dice():
 			new_col=offset[1]+self.location[1]
 			if new_row<0 or new_row>=max_row or new_col<0 or new_col>=max_col:
 				continue
+			if maze[new_row][new_col]=='*':
+				continue
 			new_location=[new_row,new_col]
 			[top,north,east]=self.roll_dice(offset)
 			if top!=6:
 				child=dice(maze,new_location,top,north,east)
+				child.parent=self
+				child.gn=self.gn+1
 				children.append(child)
 		return children
 
@@ -51,3 +64,9 @@ class dice():
 		else:
 			print('unknow offset')
 		return [top,north,east]
+
+	def display_path(self,maze):
+		maze_copy=list(maze)
+		maze_copy[self.location[0]][self.location[1]]=str(self.top)
+		for line in maze_copy:
+			print(line)
