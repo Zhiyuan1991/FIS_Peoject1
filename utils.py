@@ -13,5 +13,6 @@ def euclidean(locationA, locationB):
 def manhattan_distance(locationA, locationB):
 	return (abs(locationA[0]-locationB[0])+abs(locationA[1]-locationB[1]))
 
+
 def orientation_manhattandistance(locationA, locationB):
 	return (abs(locationA[0]-locationB[0])+abs(locationA[1]-locationB[1]))
