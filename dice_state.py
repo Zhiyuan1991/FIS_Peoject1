@@ -2,7 +2,6 @@
 
 import numpy as np
 
-
 class dice_state():
 	def __init__(self,grid,location,top,north,east):
 		self.location=location
@@ -13,6 +12,6 @@ class dice_state():
 		self.children=self.get_children(grid)
 	
 	def get_children(self,grid):
-
+		
 		
 	def 
