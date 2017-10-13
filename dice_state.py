@@ -64,9 +64,3 @@ class dice():
 		else:
 			print('unknow offset')
 		return [top,north,east]
-
-	def display_path(self,maze):
-		maze_copy=list(maze)
-		maze_copy[self.location[0]][self.location[1]]=str(self.top)
-		for line in maze_copy:
-			print(line)

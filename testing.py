@@ -5,7 +5,7 @@ print('test dice roll')
 maze=read_maze('puzzle/puzzle0.txt')
 print('start')
 start_location=dice(maze,[0,0],1,2,3)
-start_location.display_path(maze)
+display_maze(maze)
 print(start_location.location,start_location.top,start_location.north,start_location.east)
 print('children')
 children=start_location.get_children(maze)
@@ -16,10 +16,10 @@ for child in children:
 #main
 print('main')
 
-maze=read_maze('puzzle/puzzle0.txt')
+maze=read_maze('puzzle/puzzle1.txt')
 goal_location=find_goal_location(maze)
 print('Goal location: ',goal_location)
-start_location.display_path(maze)
+display_maze(maze)
 start_location=dice(maze,[0,0],1,2,3)
 
 visited=list()
@@ -50,9 +50,7 @@ while queue:
 if flag==1:
 	print("solution found")
 	print('maze:')
-	print(maze)
-	for line in maze:
-			print(line)
+	display_maze(maze)
 	path=[result]
 	cur=result
 	while cur.parent:
@@ -61,7 +59,7 @@ if flag==1:
 	path=path[::-1]
 	for node in path:
 		print()
-		node.display_path(maze)
+		display_maze(maze,node)
 else:
 	print('Solution failed')
 
