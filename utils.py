@@ -39,7 +39,7 @@ def orientation_manhattan_distance(locationA, locationB,currenttop,goaltop):
     goal_x, goal_y = locationB[0], locationB[1]
 
     x_steps, y_steps = abs(goal_x - current_x), math.fabs(goal_y - current_y)
-    #is_target_goal_top = (currenttop - goaltop) == (x_steps + y_steps) % 4
+    is_target_goal_top = abs(currenttop - goaltop) == (x_steps + y_steps) % 4
     manhattan = manhattan_distance(locationA, locationB)
 
     is_target_goal_top = currenttop != goaltop
