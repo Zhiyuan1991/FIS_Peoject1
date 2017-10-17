@@ -46,4 +46,4 @@ plt.xticks(index + bar_width, ('euclidean', 'manhattan', 'orientation_manhattan'
 plt.legend()
  
 plt.tight_layout()
-plt.show()
+#plt.show()
