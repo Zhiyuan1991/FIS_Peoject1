@@ -70,12 +70,12 @@ def orientation_manhattan_distance(locationA, locationB,currenttop,goaltop):
     if x_steps > 0 and y_steps == 0 and is_target_goal_top: #Case 4: in line with goal state in horizontal direction with goal state configuration on top. Now one can rotate in up/down direction, make x_steps moves and reverse rotate it.
         return manhattan + 2
 
-    if x_steps > 0 and y_steps > 0 and is_target_goal_top: # [1, inf), [1, inf), 0
+    if x_steps > 0 and y_steps > 0 and is_target_goal_top: #Case 5: far away from goal state with goal state orientation.
         return manhattan
 
-    if x_steps > 0 and y_steps > 0 and not is_target_goal_top: # [1, inf), [1, inf), 1
+    if x_steps > 0 and y_steps > 0 and not is_target_goal_top: #Case 6: far away from goal state without goal state orientation.
         return manhattan +4
 
-    return manhattan # default to manhattan
+    return manhattan
 
 
