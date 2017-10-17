@@ -11,7 +11,7 @@ class dice():
 		self.east=east
 		self.parent=[]
 		self.children=[]
-		self.key=str(location[0])+str(location[1])+str(top)+str(north)+str(east)
+		self.key="r"+str(location[0])+"c"+str(location[1])+"t"+str(top)+"n"+str(north)+"e"+str(east)
 		self.hn=[]
 		self.hn.append(euclidean(self.location,find_goal_location(maze)))
 		self.hn.append(manhattan_distance(self.location,find_goal_location(maze)))
@@ -95,18 +95,20 @@ def rolling_dice(maze,function_number):
 	nodes_count=1
 	visited_count=0
 
+	break_count=0
 	while queue:
+		break_count+=1
 		queue=sorted(queue, key=lambda dice: dice.hn[function_number]+dice.gn,reverse=True)
 		node=queue.pop()
-		#print("this node: ",node.top,node.location,node)
+		#print("this node: ",node.top,node.location,node.hn[function_number],node.gn)
 		visited_count+=1
 		if node.location==goal_location and node.top==1:
 			flag=1
 			result=node
 			break
 		children=node.get_children(maze)
-		#print(children)
 		#print("this node children:",len(children))
+		#print('queue:',visited,"\n")
 		all_keys=visited.keys()
 		flag_better=0
 		for child in children:
@@ -121,7 +123,7 @@ def rolling_dice(maze,function_number):
 				queue.append(child)
 				nodes_count+=1
 
-	step_count=0
+	step_count=-1
 	if flag==1:
 		print("solution found!")
 		print('initial maze:')
@@ -145,5 +147,6 @@ def rolling_dice(maze,function_number):
 	print()
 	print('nodes generated: ',nodes_count)
 	print('nodes visited: ',visited_count)
+	print('steps: ', step_count)
 	print('------- method '+str(function_number+1)+': ends -------')
 	return nodes_count,visited_count
