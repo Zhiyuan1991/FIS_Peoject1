@@ -2,6 +2,7 @@
 
 import math
 import copy
+import numpy as np
 
 def read_maze(file_name):
 	f=open(file_name,'r')
@@ -17,6 +18,16 @@ def display_maze(maze, dice=None):
 	for line in maze_copy:
 		print(line)
 
+def find_goal_location(maze):
+	maze=np.array(maze)
+	index=np.where(maze=='G')
+	return [index[0][0],index[1][0]]
+
+def find_start_location(maze):
+	maze=np.array(maze)
+	index=np.where(maze=='S')
+	return [index[0][0],index[1][0]]
+
 def euclidean(locationA, locationB):
 	return ((locationA[0]-locationB[0])**2+(locationA[1]-locationB[1])**2)**0.5
 
@@ -26,7 +37,6 @@ def manhattan_distance(locationA, locationB):
 def orientation_manhattan_distance(locationA, locationB,currenttop,goaltop):
     current_x, current_y = locationA[0], locationA[1]
     goal_x, goal_y = locationB[0], locationB[1]
-
 
     x_steps, y_steps = abs(goal_x - current_x), math.fabs(goal_y - current_y)
     is_target_goal_top = (currenttop - goaltop) == (x_steps + y_steps) % 4
