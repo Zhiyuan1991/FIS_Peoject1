@@ -150,4 +150,4 @@ dice state description: {top,north,east,row,col}
 nodes generated:  24
 nodes visited:  17
 steps:  6
-------- method 3: ends -------
+------- method 3: ends ------
