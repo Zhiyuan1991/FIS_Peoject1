@@ -1,9 +1,11 @@
 # FIS_Peoject1
-how to run the code:
+Team member: Zhiyuan Li and Sahil Gupta.
+
+# How to run the code:
 python main.py [mazefile]
 e.g. python main.py puzzle/puzzle1.txt
 
-# puzzle 1
+# Example: puzzle 1
 maze: 
 ['S', '.', '.', '.', 'G']
 ['.', '.', '.', '.', '.']
