@@ -14,12 +14,12 @@ maze=read_maze(sys.argv[1])
 print('maze: ')
 display_maze(maze)
 
+#run A* search with three heuristic functions
 generated1,visited1=rolling_dice(maze,0) #for method 1
 generated2,visited2=rolling_dice(maze,1) #for method 2
 generated3,visited3=rolling_dice(maze,2) #for method 3
 
-#draw the bar 
-# data to plot
+#draw the graph 
 n_groups = 3
 generated = (generated1,generated2,generated3)
 visited = (visited1,visited2,visited3)
